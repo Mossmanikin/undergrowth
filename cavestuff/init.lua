@@ -284,7 +284,7 @@ minetest.register_on_generated(function(minp, maxp, seed)
 						if nn == "default:dirt_with_grass" then
 							minetest.set_node(p,{name="cavestuff:pebble_"..pr:next(1,2)})
 						elseif nn == "default:desert_sand" then
-							minetest.set_node(p,{name="cavestuff:desert_pebble"..pr:next(1,2)})
+							minetest.set_node(p,{name="cavestuff:desert_pebble_"..pr:next(1,2)})
 					    end
 					end
 				end
