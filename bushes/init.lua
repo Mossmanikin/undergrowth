@@ -100,8 +100,8 @@ minetest.register_node("bushes:bushbranches2", {
     sounds = default.node_sound_leaves_defaults(),
 })
 	
-	minetest.register_node("bushes:BushLeaves", {
-    description = "BushLeaves",
+	minetest.register_node("bushes:BushLeaves1", {
+    description = "BushLeaves1",
     tiles = {
     "moretrees_sequoia_leaves.png" },
     inventory_image = "moretrees_sequoia_leaves.png",
@@ -113,33 +113,54 @@ minetest.register_node("bushes:bushbranches2", {
 		attached_node=1},
     sounds = default.node_sound_stone_defaults(),    
 })	
+
+	minetest.register_node("bushes:BushLeaves2", {
+    description = "BushLeaves2",
+    tiles = {
+    "moretrees_pine_leaves.png" },
+    inventory_image = "moretrees_pine_leaves.png",
+    --is_ground_content = true,
+        paramtype = "light",
+    paramtype2 = "facedir",
+    groups = {		snappy=3,
+		flammable=2,
+		attached_node=1},
+    sounds = default.node_sound_stone_defaults(),    
+})	
 		
 abstract_bushes.grow_bush = function(pos)
+	local leaf_type = math.random(1,2)	
+	local bush_side_height = math.random(0,1)
 		local chance_of_bush_node_right = math.random(1,10)
 		if chance_of_bush_node_right> 8 then
-			local right_pos = {x=pos.x+1, y=pos.y+1, z=pos.z}
-			abstract_bushes.grow_bush_node(right_pos,3)
+			local right_pos = {x=pos.x+1, y=pos.y+bush_side_height, z=pos.z}
+			abstract_bushes.grow_bush_node(right_pos,3,leaf_type)
 		end
 		local chance_of_bush_node_left = math.random(1,10)
 		if chance_of_bush_node_left> 8 then
-			local left_pos = {x=pos.x-1, y=pos.y+1, z=pos.z}
-			abstract_bushes.grow_bush_node(left_pos,1)
+			bush_side_height = math.random(0,1)
+			local left_pos = {x=pos.x-1, y=pos.y+bush_side_height, z=pos.z}
+			abstract_bushes.grow_bush_node(left_pos,1,leaf_type)
 		end
 		local chance_of_bush_node_front = math.random(1,10)
 		if chance_of_bush_node_front> 8 then
-			local front_pos = {x=pos.x, y=pos.y+1, z=pos.z+1}
-			abstract_bushes.grow_bush_node(front_pos,2)
+			bush_side_height = math.random(0,1)
+			local front_pos = {x=pos.x, y=pos.y+bush_side_height, z=pos.z+1}
+			abstract_bushes.grow_bush_node(front_pos,2,leaf_type)
 		end		
 		local chance_of_bush_node_back = math.random(1,10)
 		if chance_of_bush_node_back> 8 then
-			local back_pos = {x=pos.x, y=pos.y+1, z=pos.z-1}
-			abstract_bushes.grow_bush_node(back_pos,0)
+			bush_side_height = math.random(0,1)
+			local back_pos = {x=pos.x, y=pos.y+bush_side_height, z=pos.z-1}
+			abstract_bushes.grow_bush_node(back_pos,0,leaf_type)
 		end
 		
-abstract_bushes.grow_bush_node(pos,5)
+abstract_bushes.grow_bush_node(pos,5,leaf_type)
 end
 
-abstract_bushes.grow_bush_node = function(pos,dir)
+abstract_bushes.grow_bush_node = function(pos,dir, leaf_type)
+	
+	
 	local right_here = {x=pos.x, y=pos.y+1, z=pos.z}
 	local above_right_here = {x=pos.x, y=pos.y+2, z=pos.z}
 	
@@ -153,11 +174,13 @@ abstract_bushes.grow_bush_node = function(pos,dir)
 	if minetest.get_node(right_here).name == "air"  -- instead of check_air = true,
 	or minetest.get_node(right_here).name == "default:junglegrass" then
 		minetest.add_node(right_here, {name="bushes:bushbranches"..bush_branch_type , param2=dir})
-		minetest.add_node(above_right_here, {name="bushes:BushLeaves"})
+						--minetest.chat_send_all("leaf_type: (" .. leaf_type .. ")")
+		minetest.add_node(above_right_here, {name="bushes:BushLeaves"..leaf_type})
 		local chance_of_high_leaves = math.random(1,10)
 		if chance_of_high_leaves> 5 then
 			local two_above_right_here = {x=pos.x, y=pos.y+3, z=pos.z}
-			minetest.add_node(two_above_right_here, {name="bushes:BushLeaves"})
+							--minetest.chat_send_all("leaf_type: (" .. leaf_type .. ")")
+			minetest.add_node(two_above_right_here, {name="bushes:BushLeaves"..leaf_type})
 		end
 	end
 end
