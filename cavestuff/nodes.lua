@@ -192,7 +192,7 @@ minetest.register_node("cavestuff:stalactite_1",{
 		if minetest.get_node(pt.under).name=="default:stone" 
 		and minetest.get_node({x=pt.under.x, y=pt.under.y-1, z=pt.under.z}).name=="air"
 		and minetest.get_node({x=pt.under.x, y=pt.under.y-2, z=pt.under.z}).name=="air" then
-			minetest.set_node({x=pt.under.x, y=pt.under.y-1, z=pt.under.z}, {name="undergrowth:stalactite_"..math.random(1,3)})
+			minetest.set_node({x=pt.under.x, y=pt.under.y-1, z=pt.under.z}, {name="cavestuff:stalactite_"..math.random(1,3)})
 			if not minetest.setting_getbool("creative_mode") then
 				itemstack:take_item()
 			end
