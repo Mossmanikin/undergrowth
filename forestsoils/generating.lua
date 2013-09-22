@@ -3,7 +3,7 @@
 abstract_forestsoils.place_soil = function(pos)
 	local node_here = minetest.get_node(pos)
 	if minetest.registered_nodes[node_here.name] then -- instead of check_air = true,
-		if minetest.find_node_near(pos, 3, {"group:tree"}) then
+		if minetest.find_node_near(pos, 4, {"group:tree"}) then
 			minetest.add_node(pos, {name="forestsoils:dirt_with_leaves_1"})
 		end
 	end
@@ -11,11 +11,11 @@ end
 
 plantslib:register_generate_plant({
     surface = {"default:dirt_with_grass"},
-    max_count = 6400,
+    max_count = 2400,--6400,
     rarity = 1,
     min_elevation = 1,
 	near_nodes = {"group:tree"},
-	near_nodes_size = 3,
+	near_nodes_size = 4,
 	near_nodes_vertical = 1,
 	near_nodes_count = 4,
     plantlife_limit = -1,
@@ -37,9 +37,13 @@ end
 
 plantslib:register_generate_plant({
     surface = {"default:dirt_with_grass"},
-    max_count = 6400,
+    max_count = 2400,--6400,
     rarity = 67,
     min_elevation = 1,
+	near_nodes = {"group:tree"},
+	near_nodes_size = 4,
+	near_nodes_vertical = 1,
+	near_nodes_count = 1,
     plantlife_limit = -1,
     check_air = false,
   },
@@ -49,7 +53,8 @@ plantslib:register_generate_plant({
 abstract_forestsoils.place_soil_2 = function(pos)
 	local node_here = minetest.get_node(pos)
 	if minetest.registered_nodes[node_here.name] then -- instead of check_air = true,
-		if minetest.find_node_near(pos, 1, {"forestsoils:dirt_with_leaves_1"}) then
+		if minetest.find_node_near(pos, 1, {"forestsoils:dirt_with_leaves_1"}) 
+		or minetest.find_node_near(pos, 1, {"forestsoils:dirt_with_leaves_2"}) then
 			minetest.add_node(pos, {name="forestsoils:grass_with_leaves_2"})
 		end
 	end
@@ -57,9 +62,13 @@ end
 
 plantslib:register_generate_plant({
     surface = {"default:dirt_with_grass"},
-    max_count = 6400,
+    max_count = 2400,--6400,
     rarity = 1,
     min_elevation = 1,
+	near_nodes = {"forestsoils:dirt_with_leaves_1","forestsoils:dirt_with_leaves_2"},
+	near_nodes_size = 1,
+	near_nodes_vertical = 1,
+	near_nodes_count = 1,
 	plantlife_limit = -1,
     check_air = false,
   },
@@ -77,9 +86,13 @@ end
 
 plantslib:register_generate_plant({
     surface = {"default:dirt_with_grass"},
-    max_count = 6400,
+    max_count = 2400,--6400,
     rarity = 1,
     min_elevation = 1,
+	near_nodes = {"forestsoils:grass_with_leaves_2"},
+	near_nodes_size = 1,
+	near_nodes_vertical = 1,
+	near_nodes_count = 1,
     plantlife_limit = -1,
 	check_air = false,
   },
@@ -97,9 +110,13 @@ end
 
 plantslib:register_generate_plant({
     surface = {"default:dirt_with_grass"},
-    max_count = 6400,
+    max_count = 2400,--6400,
     rarity = 1,
     min_elevation = 1,
+	near_nodes = {"forestsoils:dirt_with_leaves_1"},
+	near_nodes_size = 1,
+	near_nodes_vertical = 1,
+	near_nodes_count = 1,
 	plantlife_limit = -1,
     check_air = false,
   },
