@@ -1,16 +1,16 @@
 -----------------------------------------------------------------------------------------------
 local title		= "Forest Soils"
-local version 	= "0.0.6"
+local version 	= "0.0.7"
 local mname		= "forestsoils"
 -----------------------------------------------------------------------------------------------
 
-abstract_forestsoils = {}
+abstract_woodsoils = {}
 
-dofile(minetest.get_modpath("forestsoils").."/nodes.lua")
-dofile(minetest.get_modpath("forestsoils").."/generating.lua")
+dofile(minetest.get_modpath("woodsoils").."/nodes.lua")
+dofile(minetest.get_modpath("woodsoils").."/generating.lua")
 
 -- felt like playing a bit :D
-print("  _____                              __")  
+--[[print("  _____                              __")  
 print("_/ ____\\___________   ____   _______/  |_")
 print("\\   __\\/  _ \\_  __ \\_/ __ \\ /  ___/\\   __\\")
 print(" |  | (  <_> )  | \\/\\  ___/ \\___ \\  |  |")  
@@ -22,7 +22,7 @@ print("  __________ |__|  |   ______")
 print(" /  ___/  _ \\|  |  |  /  ___/")
 print(" \\___ (  <_> )  |  |__\\___ \\")
 print("/____  >____/|__|____/____  >")
-print("     \\/                   \\/")
+print("     \\/                   \\/")]]
 
 -----------------------------------------------------------------------------------------------
 print("[Mod] "..title.." ["..version.."] ["..mname.."] Loaded...")

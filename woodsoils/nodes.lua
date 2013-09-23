@@ -1,6 +1,6 @@
 -- nodes
 
-minetest.register_node("forestsoils:dirt_with_leaves_1", {
+minetest.register_node("woodsoils:dirt_with_leaves_1", {
 	description = "Forrest Soil 1",
 	tiles = {
 		"default_dirt.png^forestsoils_ground_cover.png", 
@@ -18,7 +18,7 @@ minetest.register_node("forestsoils:dirt_with_leaves_1", {
 	}),
 })
 
-minetest.register_node("forestsoils:dirt_with_leaves_2", {
+minetest.register_node("woodsoils:dirt_with_leaves_2", {
 	description = "Forrest Soil 2",
 	tiles = {
 		"forestsoils_ground.png", 
@@ -36,7 +36,7 @@ minetest.register_node("forestsoils:dirt_with_leaves_2", {
 	}),
 })
 
-minetest.register_node("forestsoils:grass_with_leaves_1", {
+minetest.register_node("woodsoils:grass_with_leaves_1", {
 	description = "Forrest Soil 3",
 	tiles = {
 		"default_grass.png^forestsoils_ground_cover2.png", 
@@ -54,7 +54,7 @@ minetest.register_node("forestsoils:grass_with_leaves_1", {
 	}),
 })
 
-minetest.register_node("forestsoils:grass_with_leaves_2", {
+minetest.register_node("woodsoils:grass_with_leaves_2", {
 	description = "Forrest Soil 4",
 	tiles = {
 		"default_grass.png^forestsoils_ground_cover.png", 
