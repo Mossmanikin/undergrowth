@@ -100,32 +100,32 @@ minetest.register_node("bushes:bushbranches2", {
     sounds = default.node_sound_leaves_defaults(),
 })
 	
-	minetest.register_node("bushes:BushLeaves1", {
+minetest.register_node("bushes:BushLeaves1", {
     description = "BushLeaves1",
-    tiles = {
-    "moretrees_sequoia_leaves.png" },
+	drawtype = "allfaces_optional",
+    tiles = {"moretrees_sequoia_leaves.png"},
     inventory_image = "moretrees_sequoia_leaves.png",
-    --is_ground_content = true,
-        paramtype = "light",
-    paramtype2 = "facedir",
-    groups = {		snappy=3,
+    paramtype = "light",
+    groups = {		
+		snappy=3,
 		flammable=2,
-		attached_node=1},
-    sounds = default.node_sound_stone_defaults(),    
+		attached_node=1
+	},
+    sounds = default.node_sound_leaves_defaults(),    
 })	
 
-	minetest.register_node("bushes:BushLeaves2", {
+minetest.register_node("bushes:BushLeaves2", {
     description = "BushLeaves2",
-    tiles = {
-    "moretrees_pine_leaves.png" },
+	drawtype = "allfaces_optional",
+    tiles = {"moretrees_pine_leaves.png"},
     inventory_image = "moretrees_pine_leaves.png",
-    --is_ground_content = true,
-        paramtype = "light",
-    paramtype2 = "facedir",
-    groups = {		snappy=3,
+    paramtype = "light",
+    groups = {		
+		snappy=3,
 		flammable=2,
-		attached_node=1},
-    sounds = default.node_sound_stone_defaults(),    
+		attached_node=1
+	},
+    sounds = default.node_sound_leaves_defaults(),    
 })	
 		
 abstract_bushes.grow_bush = function(pos)
