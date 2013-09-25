@@ -3,9 +3,9 @@
 minetest.register_node("woodsoils:dirt_with_leaves_1", {
 	description = "Forrest Soil 1",
 	tiles = {
-		"default_dirt.png^forestsoils_ground_cover.png", 
+		"default_dirt.png^woodsoils_ground_cover.png", 
 		"default_dirt.png", 
-		"default_dirt.png^forestsoils_ground_cover_side.png"},
+		"default_dirt.png^woodsoils_ground_cover_side.png"},
 	is_ground_content = true,
 	groups = {
 		crumbly=3,
@@ -21,9 +21,9 @@ minetest.register_node("woodsoils:dirt_with_leaves_1", {
 minetest.register_node("woodsoils:dirt_with_leaves_2", {
 	description = "Forrest Soil 2",
 	tiles = {
-		"forestsoils_ground.png", 
+		"woodsoils_ground.png", 
 		"default_dirt.png", 
-		"default_dirt.png^forestsoils_ground_side.png"},
+		"default_dirt.png^woodsoils_ground_side.png"},
 	is_ground_content = true,
 	groups = {
 		crumbly=3,
@@ -39,9 +39,9 @@ minetest.register_node("woodsoils:dirt_with_leaves_2", {
 minetest.register_node("woodsoils:grass_with_leaves_1", {
 	description = "Forrest Soil 3",
 	tiles = {
-		"default_grass.png^forestsoils_ground_cover2.png", 
+		"default_grass.png^woodsoils_ground_cover2.png", 
 		"default_dirt.png", 
-		"default_dirt.png^default_grass_side.png^forestsoils_ground_cover_side2.png"},
+		"default_dirt.png^default_grass_side.png^woodsoils_ground_cover_side2.png"},
 	is_ground_content = true,
 	groups = {
 		crumbly=3,
@@ -57,9 +57,9 @@ minetest.register_node("woodsoils:grass_with_leaves_1", {
 minetest.register_node("woodsoils:grass_with_leaves_2", {
 	description = "Forrest Soil 4",
 	tiles = {
-		"default_grass.png^forestsoils_ground_cover.png", 
+		"default_grass.png^woodsoils_ground_cover.png", 
 		"default_dirt.png", 
-		"default_dirt.png^default_grass_side.png^forestsoils_ground_cover_side.png"},
+		"default_dirt.png^default_grass_side.png^woodsoils_ground_cover_side.png"},
 	is_ground_content = true,
 	groups = {
 		crumbly=3,
@@ -71,3 +71,9 @@ minetest.register_node("woodsoils:grass_with_leaves_2", {
 		footstep = {name="default_grass_footstep", gain=0.4},
 	}),
 })
+
+-- For compatibility with older stuff
+minetest.register_alias("forestsoils:dirt_with_leaves_1",	"woodsoils:dirt_with_leaves_1")
+minetest.register_alias("forestsoils:dirt_with_leaves_2",	"woodsoils:dirt_with_leaves_2")
+minetest.register_alias("forestsoils:grass_with_leaves_1",	"woodsoils:grass_with_leaves_1")
+minetest.register_alias("forestsoils:grass_with_leaves_2",	"woodsoils:grass_with_leaves_2")

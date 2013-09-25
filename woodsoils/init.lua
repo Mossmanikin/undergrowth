@@ -1,7 +1,7 @@
 -----------------------------------------------------------------------------------------------
-local title		= "Forest Soils"
-local version 	= "0.0.7"
-local mname		= "forestsoils"
+local title		= "Wood Soils" -- former "Forest Soils"
+local version 	= "0.0.8"
+local mname		= "woodsoils" -- former "forestsoils"
 -----------------------------------------------------------------------------------------------
 
 abstract_woodsoils = {}
