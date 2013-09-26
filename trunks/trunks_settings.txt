@@ -1,0 +1,7 @@
+-- Settings for generation of trunks (at map-generation time)
+
+Horizontal_Trunks 	= true
+
+Trunks_Max_Count	= 320 -- absolute maximum number in an area of 80x80x80 nodes
+
+Trunks_Rarity		= 99 -- larger values make trunks more rare (100 means chance of 0 %)
