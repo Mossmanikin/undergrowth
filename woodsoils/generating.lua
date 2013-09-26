@@ -74,8 +74,13 @@ abstract_woodsoils.place_soil = function(pos)
 end
 
 plantslib:register_generate_plant({
-    surface = {"group:tree","ferns:fern_03","ferns:fern_02","ferns:fern_01"},
-    max_count = 1000,--712,--4267,--6400,--1600,
+    surface = {
+		"group:tree",
+		"ferns:fern_03",
+		"ferns:fern_02",
+		"ferns:fern_01"
+	},
+    max_count = 1000,
     rarity = 1,
     min_elevation = 1,
 	max_elevation = 40,
@@ -89,3 +94,27 @@ plantslib:register_generate_plant({
   "abstract_woodsoils.place_soil"
 )
 
+plantslib:register_generate_plant({
+    surface = {
+		"moretrees:apple_tree_sapling_ongen",
+		"moretrees:beech_sapling_ongen",
+		"moretrees:birch_sapling_ongen",
+		"moretrees:fir_sapling_ongen",
+		"moretrees:jungletree_sapling_ongen",
+		"moretrees:oak_sapling_ongen",
+		"moretrees:palm_sapling_ongen",
+		"moretrees:pine_sapling_ongen",
+		"moretrees:rubber_tree_sapling_ongen",
+		"moretrees:sequoia_sapling_ongen",
+		"moretrees:spruce_sapling_ongen",
+		"moretrees:willow_sapling_ongen"
+	},
+    max_count = 1000,
+    rarity = 2,
+    min_elevation = 1,
+	max_elevation = 40,
+	plantlife_limit = -0.9,
+    check_air = false,
+  },
+  "abstract_woodsoils.place_soil"
+)
