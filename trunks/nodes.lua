@@ -38,3 +38,24 @@ minetest.register_node("trunks:moss", {
 	legacy_wallmounted = true,
 	sounds = default.node_sound_leaves_defaults(),
 })
+
+minetest.register_node("trunks:moss_fungus", {
+	description = "moss & fungus",
+	drawtype = "signlike",
+	tiles = {"trunks_moss_fungus.png"},
+	inventory_image = "trunks_moss_fungus.png",
+	wield_image = "trunks_moss_fungus.png",
+	paramtype = "light",
+	paramtype2 = "wallmounted",
+	walkable = false,
+	--climbable = true,
+	selection_box = {
+		type = "wallmounted",
+		--wall_top = = <default>
+		--wall_bottom = = <default>
+		--wall_side = = <default>
+	},
+	groups = {choppy=2,oddly_breakable_by_hand=3,flammable=2},
+	legacy_wallmounted = true,
+	sounds = default.node_sound_leaves_defaults(),
+})
