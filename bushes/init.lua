@@ -132,24 +132,24 @@ abstract_bushes.grow_bush = function(pos)
 	local leaf_type = math.random(1,2)	
 	local bush_side_height = math.random(0,1)
 		local chance_of_bush_node_right = math.random(1,10)
-		if chance_of_bush_node_right> 8 then
+		if chance_of_bush_node_right> 5 then
 			local right_pos = {x=pos.x+1, y=pos.y+bush_side_height, z=pos.z}
 			abstract_bushes.grow_bush_node(right_pos,3,leaf_type)
 		end
 		local chance_of_bush_node_left = math.random(1,10)
-		if chance_of_bush_node_left> 8 then
+		if chance_of_bush_node_left> 5 then
 			bush_side_height = math.random(0,1)
 			local left_pos = {x=pos.x-1, y=pos.y+bush_side_height, z=pos.z}
 			abstract_bushes.grow_bush_node(left_pos,1,leaf_type)
 		end
 		local chance_of_bush_node_front = math.random(1,10)
-		if chance_of_bush_node_front> 8 then
+		if chance_of_bush_node_front> 5 then
 			bush_side_height = math.random(0,1)
 			local front_pos = {x=pos.x, y=pos.y+bush_side_height, z=pos.z+1}
 			abstract_bushes.grow_bush_node(front_pos,2,leaf_type)
 		end		
 		local chance_of_bush_node_back = math.random(1,10)
-		if chance_of_bush_node_back> 8 then
+		if chance_of_bush_node_back> 5 then
 			bush_side_height = math.random(0,1)
 			local back_pos = {x=pos.x, y=pos.y+bush_side_height, z=pos.z-1}
 			abstract_bushes.grow_bush_node(back_pos,0,leaf_type)
