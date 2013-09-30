@@ -1,9 +1,15 @@
 -- Settings for generation of trunks (at map-generation time)
 
-Horizontal_Trunks 	= true
+Horizontal_Trunks 			= true
 
-Trunks_Max_Count	= 320 -- absolute maximum number in an area of 80x80x80 nodes
-Trunks_Rarity		= 99 -- larger values make trunks more rare (100 means chance of 0 %)
+Trunks_Max_Count			= 320 -- absolute maximum number in an area of 80x80x80 nodes
+Trunks_Rarity				= 99 -- larger values make trunks more rare (100 means chance of 0 %)
 
-Twigs_Max_Count		= 640 -- absolute maximum number in an area of 80x80x80 nodes
-Twigs_Rarity		= 66 -- larger values make trunks more rare (100 means chance of 0 %)
+Twigs_Max_Count				= 640 -- absolute maximum number in an area of 80x80x80 nodes
+Twigs_Rarity				= 66 -- larger values make twigs more rare (100 means chance of 0 %)
+
+Moss_on_ground_Max_Count	= 400 -- absolute maximum number in an area of 80x80x80 nodes
+Moss_on_ground_Rarity		= 79 -- larger values makes moss more rare (100 means chance of 0 %)
+
+Moss_on_trunk_Max_Count		= 640 -- absolute maximum number in an area of 80x80x80 nodes
+Moss_on_trunk_Rarity		= 24 -- larger values makes moss more rare (100 means chance of 0 %)

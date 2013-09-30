@@ -1,3 +1,6 @@
+-----------------------------------------------------------------------------------------------
+-- TWiG
+-----------------------------------------------------------------------------------------------
 local flat_stick = {-1/2, -1/2, -1/2, 1/2, -7/16, 1/2}
 
 minetest.register_node("trunks:twig", {
@@ -18,44 +21,40 @@ minetest.register_node("trunks:twig", {
 	sounds = default.node_sound_leaves_defaults(),
 })
 
+-----------------------------------------------------------------------------------------------
+-- MoSS
+-----------------------------------------------------------------------------------------------
 minetest.register_node("trunks:moss", {
-	description = "moss",
+	description = "Moss",
 	drawtype = "signlike",
 	tiles = {"trunks_moss.png"},
 	inventory_image = "trunks_moss.png",
 	wield_image = "trunks_moss.png",
 	paramtype = "light",
 	paramtype2 = "wallmounted",
+	sunlight_propagates = true,
 	walkable = false,
-	--climbable = true,
-	selection_box = {
-		type = "wallmounted",
-		--wall_top = = <default>
-		--wall_bottom = = <default>
-		--wall_side = = <default>
-	},
-	groups = {choppy=2,oddly_breakable_by_hand=3,flammable=2},
-	legacy_wallmounted = true,
+	selection_box = {type = "wallmounted"},
+	groups = {dig_immediate=2,attached_node=1},
+	--legacy_wallmounted = true,
 	sounds = default.node_sound_leaves_defaults(),
 })
 
+-----------------------------------------------------------------------------------------------
+-- MoSS & FuNGuS
+-----------------------------------------------------------------------------------------------
 minetest.register_node("trunks:moss_fungus", {
-	description = "moss & fungus",
+	description = "Moss & Fungus",
 	drawtype = "signlike",
 	tiles = {"trunks_moss_fungus.png"},
 	inventory_image = "trunks_moss_fungus.png",
 	wield_image = "trunks_moss_fungus.png",
 	paramtype = "light",
 	paramtype2 = "wallmounted",
+	sunlight_propagates = true,
 	walkable = false,
-	--climbable = true,
-	selection_box = {
-		type = "wallmounted",
-		--wall_top = = <default>
-		--wall_bottom = = <default>
-		--wall_side = = <default>
-	},
-	groups = {choppy=2,oddly_breakable_by_hand=3,flammable=2},
-	legacy_wallmounted = true,
+	selection_box = {type = "wallmounted"},
+	groups = {dig_immediate=2,attached_node=1},
+	--legacy_wallmounted = true,
 	sounds = default.node_sound_leaves_defaults(),
 })
