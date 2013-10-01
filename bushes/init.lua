@@ -40,8 +40,8 @@
  
 
 
-minetest.register_node("bushes:bushbranches2", {
-    description = "bushbranches2",
+minetest.register_node("bushes:bushbranches2a", {
+    description = "bushbranches2a",
     drawtype = "nodebox",
     tiles = {
         "blank.png",
@@ -99,6 +99,39 @@ minetest.register_node("bushes:bushbranches2", {
     groups = {tree=1, snappy=3, flammable=2, leaves=1},
     sounds = default.node_sound_leaves_defaults(),
 })
+
+minetest.register_node("bushes:bushbranches2", {
+    description = "bushbranches2",
+    drawtype = "nodebox",
+    tiles = {
+        "blank.png",
+        "BlockBranch1Lsm.png",
+        "BlockBranch1Lsm.png",
+        "BlockBranch1Rsm.png",
+        "BlockBranch1Rsm.png",
+        "blank.png"
+    },
+    node_box = {
+        type = "fixed",
+        fixed = {
+		{-0.137748,-0.491944,-0.492210,0.125000,-0.179444,0.007790}, --NodeBox 1
+		{-0.262748,-0.185995,-0.489731,0.237252,0.126505,0.260269}, --NodeBox 2
+		{-0.500000,0.125000,-0.500000,0.500000,0.500000,0.500000}, --NodeBox 3
+        },
+    },
+    selection_box = {
+        type = "fixed",
+        fixed = {-1/2, -1/2, -1/2, 1/2, 1/2, 1/2},
+    },
+    inventory_image = "BlockBranch1Rsm.png",
+    paramtype = "light",
+		paramtype2 = "facedir",
+			sunlight_propagates = true,
+    groups = {tree=1, snappy=3, flammable=2, leaves=1},
+    sounds = default.node_sound_leaves_defaults(),
+})
+ 
+
 	
 minetest.register_node("bushes:BushLeaves1", {
     description = "BushLeaves1",
