@@ -3,13 +3,14 @@
 -----------------------------------------------------------------------------------------------
 abstract_trunks.place_twig = function(pos)
 	local right_here = {x=pos.x, y=pos.y+1, z=pos.z}
-	minetest.add_node(right_here, {name="trunks:twig", param2=math.random(0,3)})
+	minetest.add_node(right_here, {name="trunks:twig_"..math.random(1,3), param2=math.random(0,3)})
 end
 
+if Twigs_on_ground == true then
 plantslib:register_generate_plant({
     surface = {"default:dirt_with_grass"},
-    max_count = Twigs_Max_Count,
-    rarity = Twigs_Rarity,
+    max_count = Twigs_on_ground_Max_Count,
+    rarity = Twigs_on_ground_Rarity,
     min_elevation = 1,
 	max_elevation = 40,
 	near_nodes = {"group:tree","ferns:fern_03","ferns:fern_02","ferns:fern_01"},
@@ -20,6 +21,24 @@ plantslib:register_generate_plant({
   },
   "abstract_trunks.place_twig"
 )
+end
+
+if Twigs_on_water == true then
+plantslib:register_generate_plant({
+    surface = {"default:water_source"},
+    max_count = Twigs_on_water_Max_Count,
+    rarity = Twigs_on_water_Rarity,
+    min_elevation = 1,
+	max_elevation = 40,
+	near_nodes = {"group:tree"},
+	near_nodes_size = 3,
+	near_nodes_vertical = 1,
+	near_nodes_count = 1,
+    plantlife_limit = -0.9,
+  },
+  "abstract_trunks.place_twig"
+)
+end
 
 -----------------------------------------------------------------------------------------------
 -- TRuNKS
@@ -170,6 +189,7 @@ plantslib:register_generate_plant({
 -----------------------------------------------------------------------------------------------
 -- MoSS & FuNGuS -- on ground
 -----------------------------------------------------------------------------------------------
+if Moss_on_ground == true then
 abstract_trunks.grow_moss_on_ground = function(pos)
 	local on_ground = {x=pos.x, y=pos.y+1, z=pos.z}
 	local moss_type = math.random(1,21)
@@ -201,10 +221,12 @@ plantslib:register_generate_plant({
   },
   "abstract_trunks.grow_moss_on_ground"
 )
+end
 
 -----------------------------------------------------------------------------------------------
 -- MoSS & FuNGuS -- on trunks
 -----------------------------------------------------------------------------------------------
+if Moss_on_trunk == true then
 abstract_trunks.grow_moss_on_trunk = function(pos)
 	local on_ground = {x=pos.x, y=pos.y+1, z=pos.z}
 	local at_side_n = {x=pos.x, y=pos.y, z=pos.z+1}
@@ -299,3 +321,4 @@ plantslib:register_generate_plant({
   },
   "abstract_trunks.grow_moss_on_trunk"
 )
+end
