@@ -46,3 +46,5 @@ Moss_on_trunk			= true
 
 Moss_on_trunk_Max_Count		= 640 -- absolute maximum number in an area of 80x80x80 nodes
 Moss_on_trunk_Rarity		= 24 -- larger values makes moss more rare (100 means chance of 0 %)
+
+Auto_Roof_Corner 		= true -- behavior is similar (not the same!) to the one of minecraft stairs
