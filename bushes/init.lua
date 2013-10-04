@@ -16,7 +16,7 @@
         "BushBranches1sm5.png",
         "BushBranches1sm5.png",
         "BushBranches1sm5.png",
-        "blank.png"
+        "BushBranches1sm5.png"
     },
     node_box = {
         type = "fixed",

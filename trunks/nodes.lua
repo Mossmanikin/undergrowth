@@ -5,7 +5,7 @@
 minetest.register_alias("trunks:twig",	"trunks:twig_1")
 
 local flat_stick 	= {-1/2, -1/2, -1/2, 1/2, -7/16, 1/2}
-local NoDe 			= { {1}, {2}, {3} }
+local NoDe 			= { {1}, {2}, {3}, {4} }
 
 for i in pairs(NoDe) do
 	local NR = NoDe[i][1]
