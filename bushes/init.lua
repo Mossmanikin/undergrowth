@@ -5,18 +5,18 @@
 -- Branch textures created by Neuromancer.
 -- Licence for Code and Non-Bush leaf code is WTFPL.
  
-  abstract_bushes = {}
-  
+  abstract_bushes = {} 
+
   minetest.register_node("bushes:bushbranches1", {
     description = "bushbranches1",
     drawtype = "nodebox",
     tiles = {
         "blank.png",
-        "BushBranches1sm5.png",
-        "BushBranches1sm5.png",
-        "BushBranches1sm5.png",
-        "BushBranches1sm5.png",
-        "BushBranches1sm5.png"
+        "BushBranchesCenter.png",
+        "BushBranchesCenter.png",
+        "BushBranchesCenter.png",
+        "BushBranchesCenter.png",
+        "BushBranchesCenter.png"
     },
     node_box = {
         type = "fixed",
@@ -29,7 +29,7 @@
         type = "fixed",
         fixed = {-1/2, -1/2, -1/2, 1/2, 1/2, 1/2},
     },
-    inventory_image = "BlockBranch1Rsm.png",
+    inventory_image = "BushBranchesCenter.png",
     paramtype = "light",
 		paramtype2 = "facedir",
 			sunlight_propagates = true,
@@ -37,133 +37,59 @@
     sounds = default.node_sound_leaves_defaults(),
 })
 
- 
+local BushBranchNode 			= { {2}, {3}}
+for i in pairs(BushBranchNode) do
+	local Num = BushBranchNode[i][1]	
+	minetest.register_node("bushes:bushbranches"..Num, {
+		description = "bushbranches"..Num,
+		drawtype = "nodebox",
+		tiles = {
+			"blank.png",
+			"BushBranchesSide1.png",
+			"BushBranchesSide1.png",
+			"BushBranchesSide2.png",
+			"BushBranchesSide2.png",
+			"BushBranchesCenter.png"
+		},
+		node_box = {
+			type = "fixed",
+			fixed = {
+			{0.137748,-0.491944,0.5,-0.125000,-0.179444,-0.007790}, --NodeBox 1
+			{0.262748,-0.185995,0.5,-0.237252,0.126505,-0.260269}, --NodeBox 2
+			{0.500000,0.125000,0.500000,-0.500000,0.500000,-0.500000}, --NodeBox 3
+			},
+		},
+		selection_box = {
+			type = "fixed",
+			fixed = {-1/2, -1/2, -1/2, 1/2, 1/2, 1/2},
+		},
+		inventory_image = "BushBranchesCenter.png",
+		paramtype = "light",
+			paramtype2 = "facedir",
+				sunlight_propagates = true,
+		groups = {tree=1, snappy=3, flammable=2, leaves=1},
+		sounds = default.node_sound_leaves_defaults(),
+	})
+end
 
+local BushLeafNode 			= { {1}, {2}}
+for i in pairs(BushLeafNode) do
+	local Num = BushLeafNode[i][1]	
+	minetest.register_node("bushes:BushLeaves"..Num, {
+		description = "BushLeaves"..Num,
+		drawtype = "allfaces_optional",
+		tiles = {"bush_leaves"..Num..".png"},
+		inventory_image = "bush_leaves"..Num..".png",
+		paramtype = "light",
+		groups = {		
+			snappy=3,
+			flammable=2,
+			attached_node=1
+		},
+		sounds = default.node_sound_leaves_defaults(),    
+	})	
+end
 
-minetest.register_node("bushes:bushbranches2a", {
-    description = "bushbranches2a",
-    drawtype = "nodebox",
-    tiles = {
-        "blank.png",
-        "BlockBranch1Lsm.png",
-        "BlockBranch1Lsm.png",
-        "BlockBranch1Rsm.png",
-        "BlockBranch1Rsm.png",
-        "blank.png"
-    },
-    node_box = {
-        type = "fixed",
-        fixed = {
-            {0, -1/2, -1/2, -1/4, 1/2, 1/2},
-            {0, -1/2, -1/2, 1/4, 1/2, 1/2}
-        },
-    },
-    selection_box = {
-        type = "fixed",
-        fixed = {-1/2, -1/2, -1/2, 1/2, 1/2, 1/2},
-    },
-    inventory_image = "BlockBranch1Rsm.png",
-    paramtype = "light",
-		paramtype2 = "facedir",
-			sunlight_propagates = true,
-    groups = {tree=1, snappy=3, flammable=2, leaves=1},
-    sounds = default.node_sound_leaves_defaults(),
-})
-		
-	minetest.register_node("bushes:bushbranches3", {
-    description = "bushbranches3",
-    drawtype = "nodebox",
-    tiles = {
-        "blank.png",
-        "BlockBranch1Rsm.png",
-        "BlockBranch1Rsm.png",
-        "BlockBranch1Lsm.png",
-        "BlockBranch1Lsm.png",
-        "blank.png"
-    },
-    node_box = {
-        type = "fixed",
-        fixed = {
-            {0, -1/2, -1/2, -1/4, 1/2, 1/2},
-            {0, -1/2, -1/2, 1/4, 1/2, 1/2}
-        },
-    },
-    selection_box = {
-        type = "fixed",
-        fixed = {-1/2, -1/2, -1/2, 1/2, 1/2, 1/2},
-    },
-    inventory_image = "BlockBranch1Rsm.png",
-    paramtype = "light",
-		paramtype2 = "facedir",
-			sunlight_propagates = true,
-    groups = {tree=1, snappy=3, flammable=2, leaves=1},
-    sounds = default.node_sound_leaves_defaults(),
-})
-
-minetest.register_node("bushes:bushbranches2", {
-    description = "bushbranches2",
-    drawtype = "nodebox",
-    tiles = {
-        "blank.png",
-        "BlockBranch1Lsm.png",
-        "BlockBranch1Lsm.png",
-        "BlockBranch1Rsm.png",
-        "BlockBranch1Rsm.png",
-        "BushBranches1sm5.png"
-    },
-    node_box = {
-        type = "fixed",
-        fixed = {
-		--{-0.137748,-0.491944,-0.492210,0.125000,-0.179444,0.007790}, --NodeBox 1
-		--{-0.262748,-0.185995,-0.489731,0.237252,0.126505,0.260269}, --NodeBox 2
-		--{-0.500000,0.125000,-0.500000,0.500000,0.500000,0.500000}, --NodeBox 3
-		{0.137748,-0.491944,0.5,-0.125000,-0.179444,-0.007790}, --NodeBox 1
-		{0.262748,-0.185995,0.5,-0.237252,0.126505,-0.260269}, --NodeBox 2
-		{0.500000,0.125000,0.500000,-0.500000,0.500000,-0.500000}, --NodeBox 3
-        },
-    },
-    selection_box = {
-        type = "fixed",
-        fixed = {-1/2, -1/2, -1/2, 1/2, 1/2, 1/2},
-    },
-    inventory_image = "BlockBranch1Rsm.png",
-    paramtype = "light",
-		paramtype2 = "facedir",
-			sunlight_propagates = true,
-    groups = {tree=1, snappy=3, flammable=2, leaves=1},
-    sounds = default.node_sound_leaves_defaults(),
-})
- 
-
-	
-minetest.register_node("bushes:BushLeaves1", {
-    description = "BushLeaves1",
-	drawtype = "allfaces_optional",
-    tiles = {"moretrees_sequoia_leaves.png"},
-    inventory_image = "moretrees_sequoia_leaves.png",
-    paramtype = "light",
-    groups = {		
-		snappy=3,
-		flammable=2,
-		attached_node=1
-	},
-    sounds = default.node_sound_leaves_defaults(),    
-})	
-
-minetest.register_node("bushes:BushLeaves2", {
-    description = "BushLeaves2",
-	drawtype = "allfaces_optional",
-    tiles = {"moretrees_pine_leaves.png"},
-    inventory_image = "moretrees_pine_leaves.png",
-    paramtype = "light",
-    groups = {		
-		snappy=3,
-		flammable=2,
-		attached_node=1
-	},
-    sounds = default.node_sound_leaves_defaults(),    
-})	
-		
 abstract_bushes.grow_bush = function(pos)
 	local leaf_type = math.random(1,2)	
 	local bush_side_height = math.random(0,1)
@@ -222,7 +148,6 @@ abstract_bushes.grow_bush_node = function(pos,dir, leaf_type)
 end
 
 
-
 plantslib:register_generate_plant({
     surface = {
 		"default:dirt_with_grass", 
@@ -240,6 +165,3 @@ plantslib:register_generate_plant({
 )		
 	 
 		--http://dev.minetest.net/Node_Drawtypes
-		
-		
-		
