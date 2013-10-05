@@ -4,8 +4,9 @@
 -- For compatibility with older stuff
 minetest.register_alias("trunks:twig",	"trunks:twig_1")
 
-local flat_stick 	= {-1/2, -1/2, -1/2, 1/2, -7/16, 1/2}
-local NoDe 			= { {1}, {2}, {3}, {4} }
+local flat_stick = {-1/2, -1/2, -1/2, 1/2, -7/16, 1/2}
+local NoDe = { {1}, {2}, {3}, {4}, {5}, --[[{6},]] {7}, {8}, {9}, {10}, {11} }
+
 
 for i in pairs(NoDe) do
 	local NR = NoDe[i][1]
@@ -15,7 +16,11 @@ for i in pairs(NoDe) do
 		inventory_image = "trunks_twig_"..NR..".png",
 		wield_image = "trunks_twig_"..NR..".png",
 		drawtype = "nodebox",
-		tiles = { "trunks_twig_"..NR..".png" },
+		tiles = { 
+			"trunks_twig_"..NR..".png",
+			"trunks_twig_"..NR..".png^[transformFY", -- mirror
+			"trunks_twig_6.png" -- empty
+		},
 		paramtype = "light",
 		paramtype2 = "facedir",
 		walkable = false,
@@ -34,7 +39,7 @@ for i in pairs(NoDe) do
 			local pt = pointed_thing
 			local direction = minetest.dir_to_facedir(placer:get_look_dir())
 			if minetest.get_node(pt.above).name=="air" then
-				minetest.set_node(pt.above, {name="trunks:twig_"..math.random(1,3), param2=direction})
+				minetest.set_node(pt.above, {name="trunks:twig_"..math.random(1,4), param2=direction})
 				if not minetest.setting_getbool("creative_mode") then
 					itemstack:take_item()
 				end

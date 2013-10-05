@@ -2,8 +2,149 @@
 -- TWiGS
 -----------------------------------------------------------------------------------------------
 abstract_trunks.place_twig = function(pos)
-	local right_here = {x=pos.x, y=pos.y+1, z=pos.z}
-	minetest.add_node(right_here, {name="trunks:twig_"..math.random(1,3), param2=math.random(0,3)})
+	local twig_size 	= math.random(1,24)
+	
+	local right_here 	= {x=pos.x  , y=pos.y+1, z=pos.z  }
+	local north 		= {x=pos.x  , y=pos.y+1, z=pos.z+1}
+	local north_east 	= {x=pos.x+1, y=pos.y+1, z=pos.z+1}
+	local east 			= {x=pos.x+1, y=pos.y+1, z=pos.z  }
+	local south_east 	= {x=pos.x+1, y=pos.y+1, z=pos.z-1}
+	local south 		= {x=pos.x  , y=pos.y+1, z=pos.z-1}
+	local south_west 	= {x=pos.x-1, y=pos.y+1, z=pos.z-1}
+	local west 			= {x=pos.x-1, y=pos.y+1, z=pos.z  }
+	local north_west 	= {x=pos.x-1, y=pos.y+1, z=pos.z+1}
+	
+	local node_here 	= minetest.get_node(right_here)
+	local node_north 	= minetest.get_node(north)
+	local node_n_e 		= minetest.get_node(north_east)
+	local node_east 	= minetest.get_node(east)
+	local node_s_e 		= minetest.get_node(south_east)
+	local node_south 	= minetest.get_node(south)
+	local node_s_w 		= minetest.get_node(south_west)
+	local node_west 	= minetest.get_node(west)
+	local node_n_w 		= minetest.get_node(north_west)
+--	small twigs	
+	if twig_size <= 16 then
+		minetest.add_node(right_here, {name="trunks:twig_"..math.random(1,4), param2=math.random(0,3)})
+	end
+-- 	big twigs
+	if Big_Twigs == true then
+--	big twig 1		
+	if twig_size == 17 then
+		if not (minetest.registered_nodes[minetest.get_node({x=pos.x+1,y=pos.y,z=pos.z+1}).name].buildable_to
+			or minetest.registered_nodes[minetest.get_node({x=pos.x+1,y=pos.y,z=pos.z}).name].buildable_to) then
+			
+			if minetest.registered_nodes[node_here.name].buildable_to then
+				minetest.add_node(right_here, {name="trunks:twig_5"})
+			end
+			if minetest.registered_nodes[node_n_e.name].buildable_to then
+				minetest.add_node(north_east, {name="trunks:twig_7"})
+			end
+			if minetest.registered_nodes[node_east.name].buildable_to then
+				minetest.add_node(east, 	  {name="trunks:twig_8"})
+			end
+		end
+	elseif twig_size == 18 then
+		if not (minetest.registered_nodes[minetest.get_node({x=pos.x+1,y=pos.y,z=pos.z-1}).name].buildable_to
+			or minetest.registered_nodes[minetest.get_node({x=pos.x,y=pos.y,z=pos.z-1}).name].buildable_to) then
+			
+			if minetest.registered_nodes[node_here.name].buildable_to then
+				minetest.add_node(right_here, {name="trunks:twig_5", param2=1})
+			end
+			if minetest.registered_nodes[node_s_e.name].buildable_to then
+				minetest.add_node(south_east, {name="trunks:twig_7", param2=1})
+			end
+			if minetest.registered_nodes[node_south.name].buildable_to then
+				minetest.add_node(south, 	  {name="trunks:twig_8", param2=1})
+			end
+		end
+	elseif twig_size == 19 then
+		if not (minetest.registered_nodes[minetest.get_node({x=pos.x+1,y=pos.y,z=pos.z-1}).name].buildable_to
+			or minetest.registered_nodes[minetest.get_node({x=pos.x-1,y=pos.y,z=pos.z}).name].buildable_to) then
+			
+			if minetest.registered_nodes[node_here.name].buildable_to then
+				minetest.add_node(right_here, {name="trunks:twig_5", param2=2})
+			end
+			if minetest.registered_nodes[node_s_w.name].buildable_to then
+				minetest.add_node(south_west, {name="trunks:twig_7", param2=2})
+			end
+			if minetest.registered_nodes[node_west.name].buildable_to then
+				minetest.add_node(west, 	  {name="trunks:twig_8", param2=2})
+			end
+		end
+	elseif twig_size == 20 then
+		if not (minetest.registered_nodes[minetest.get_node({x=pos.x-1,y=pos.y,z=pos.z+1}).name].buildable_to
+			or minetest.registered_nodes[minetest.get_node({x=pos.x,y=pos.y,z=pos.z+1}).name].buildable_to) then
+			
+			if minetest.registered_nodes[node_here.name].buildable_to then
+				minetest.add_node(right_here, {name="trunks:twig_5", param2=3})
+			end
+			if minetest.registered_nodes[node_n_w.name].buildable_to then
+				minetest.add_node(north_west, {name="trunks:twig_7", param2=3})
+			end
+			if minetest.registered_nodes[node_north.name].buildable_to then
+				minetest.add_node(north, 	  {name="trunks:twig_8", param2=3})
+			end
+		end
+--	big twig 2		
+	elseif twig_size == 21 then
+		if not (minetest.registered_nodes[minetest.get_node({x=pos.x,y=pos.y,z=pos.z+1}).name].buildable_to
+			or minetest.registered_nodes[minetest.get_node({x=pos.x+1,y=pos.y,z=pos.z+1}).name].buildable_to) then
+			
+			if minetest.registered_nodes[node_here.name].buildable_to then
+				minetest.add_node(right_here, {name="trunks:twig_9"})
+			end
+			if minetest.registered_nodes[node_north.name].buildable_to then
+				minetest.add_node(north, 	  {name="trunks:twig_10"})
+			end
+			if minetest.registered_nodes[node_n_e.name].buildable_to then
+				minetest.add_node(north_east, {name="trunks:twig_11"})
+			end
+		end
+	elseif twig_size == 22 then
+		if not (minetest.registered_nodes[minetest.get_node({x=pos.x+1,y=pos.y,z=pos.z}).name].buildable_to
+			or minetest.registered_nodes[minetest.get_node({x=pos.x+1,y=pos.y,z=pos.z-1}).name].buildable_to) then
+			
+			if minetest.registered_nodes[node_here.name].buildable_to then
+				minetest.add_node(right_here, {name="trunks:twig_9", param2=1})
+			end
+			if minetest.registered_nodes[node_east.name].buildable_to then
+				minetest.add_node(east, 	  {name="trunks:twig_10", param2=1})
+			end
+			if minetest.registered_nodes[node_s_e.name].buildable_to then
+				minetest.add_node(south_east, {name="trunks:twig_11", param2=1})
+			end
+		end
+	elseif twig_size == 23 then
+		if not (minetest.registered_nodes[minetest.get_node({x=pos.x,y=pos.y,z=pos.z-1}).name].buildable_to
+			or minetest.registered_nodes[minetest.get_node({x=pos.x-1,y=pos.y,z=pos.z-1}).name].buildable_to) then
+			
+			if minetest.registered_nodes[node_here.name].buildable_to then
+				minetest.add_node(right_here, {name="trunks:twig_9", param2=2})
+			end
+			if minetest.registered_nodes[node_south.name].buildable_to then
+				minetest.add_node(south, 	  {name="trunks:twig_10", param2=2})
+			end
+			if minetest.registered_nodes[node_s_w.name].buildable_to then
+				minetest.add_node(south_west, {name="trunks:twig_11", param2=2})
+			end
+		end
+	elseif twig_size == 24 then
+		if not (minetest.registered_nodes[minetest.get_node({x=pos.x-1,y=pos.y,z=pos.z}).name].buildable_to
+			or minetest.registered_nodes[minetest.get_node({x=pos.x-1,y=pos.y,z=pos.z+1}).name].buildable_to) then
+			
+			if minetest.registered_nodes[node_here.name].buildable_to then
+				minetest.add_node(right_here, {name="trunks:twig_9", param2=3})
+			end
+			if minetest.registered_nodes[node_west.name].buildable_to then
+				minetest.add_node(west, 	  {name="trunks:twig_10", param2=3})
+			end
+			if minetest.registered_nodes[node_n_w.name].buildable_to then
+				minetest.add_node(north_west, {name="trunks:twig_11", param2=3})
+			end
+		end
+	end
+	end
 end
 
 if Twigs_on_ground == true then
