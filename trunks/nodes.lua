@@ -52,17 +52,20 @@ end
 -----------------------------------------------------------------------------------------------
 -- MoSS
 -----------------------------------------------------------------------------------------------
+local flat_moss = {-1/2, -1/2, -1/2, 1/2, -15/32--[[<-flickers if smaller]], 1/2}
+
 minetest.register_node("trunks:moss", {
 	description = "Moss",
-	drawtype = "signlike",
+	drawtype = "nodebox",--"signlike",
 	tiles = {"trunks_moss.png"},
 	inventory_image = "trunks_moss.png",
 	wield_image = "trunks_moss.png",
 	paramtype = "light",
-	paramtype2 = "wallmounted",
+	paramtype2 = "facedir",--"wallmounted",
 	sunlight_propagates = true,
 	walkable = false,
-	selection_box = {type = "wallmounted"},
+	node_box = {type = "fixed", fixed = flat_moss},
+	selection_box = {type = "fixed", fixed = flat_stick},--{type = "wallmounted"},
 	groups = {dig_immediate=2,attached_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
@@ -72,15 +75,16 @@ minetest.register_node("trunks:moss", {
 -----------------------------------------------------------------------------------------------
 minetest.register_node("trunks:moss_fungus", {
 	description = "Moss & Fungus",
-	drawtype = "signlike",
+	drawtype = "nodebox",--"signlike",
 	tiles = {"trunks_moss_fungus.png"},
 	inventory_image = "trunks_moss_fungus.png",
 	wield_image = "trunks_moss_fungus.png",
 	paramtype = "light",
-	paramtype2 = "wallmounted",
+	paramtype2 = "facedir",--"wallmounted",
 	sunlight_propagates = true,
 	walkable = false,
-	selection_box = {type = "wallmounted"},
+	node_box = {type = "fixed", fixed = flat_moss},
+	selection_box = {type = "fixed", fixed = flat_stick},--{type = "wallmounted"},
 	groups = {dig_immediate=2,attached_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
