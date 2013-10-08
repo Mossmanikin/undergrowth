@@ -23,9 +23,7 @@ FOLDER								TEXTURE							AUTHORS
 									trunks_twigs_top.png 			Mossmanikin
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ../trunks/textures/old & unused		comboSticks.png					Mossmanikin, Neuromancer	
-									comboSticks_2.png				Mossmanikin, Neuromancer		
-									MultiLilly16x.png				Neuromancer			
-									pondscum16xc.png				Neuromancer
+									comboSticks_2.png				Mossmanikin, Neuromancer
 									trunks_twig_1e.png				Mossmanikin, Neuromancer
 									trunks_twig_1n.png				Mossmanikin, Neuromancer
 									trunks_twig_2n.png				Mossmanikin, Neuromancer
