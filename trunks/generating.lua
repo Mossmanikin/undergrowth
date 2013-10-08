@@ -1,3 +1,4 @@
+-- Code by Mossmanikin & Neuromancer
 -----------------------------------------------------------------------------------------------
 -- TWiGS
 -----------------------------------------------------------------------------------------------
@@ -244,21 +245,30 @@ abstract_trunks.place_trunk = function(pos)
 	
 	local right_here = {x=pos.x, y=pos.y+1, z=pos.z}
 	local north = {x=pos.x, y=pos.y+1, z=pos.z+1}
+	local north2 = {x=pos.x, y=pos.y+1, z=pos.z+2}
 	local south = {x=pos.x, y=pos.y+1, z=pos.z-1}
+	local south2 = {x=pos.x, y=pos.y+1, z=pos.z-2}
 	local west = {x=pos.x-1, y=pos.y+1, z=pos.z}
+	local west2 = {x=pos.x-2, y=pos.y+1, z=pos.z}
 	local east = {x=pos.x+1, y=pos.y+1, z=pos.z}
+	local east2 = {x=pos.x+2, y=pos.y+1, z=pos.z}
 	
 	local node_here = minetest.get_node(right_here)
 	local node_north = minetest.get_node(north)
+	local node_north2 = minetest.get_node(north2)
 	local node_south = minetest.get_node(south)
+	local node_south2 = minetest.get_node(south2)
 	local node_west = minetest.get_node(west)
+	local node_west2 = minetest.get_node(west2)
 	local node_east = minetest.get_node(east)
+	local node_east2 = minetest.get_node(east2)
 	if minetest.registered_nodes[node_here.name].buildable_to then -- instead of check_air = true,
 		for i in pairs(TRuNKS) do
 			local 	MoD = 			TRuNKS[i][1]
 			local 	TRuNK = 		TRuNKS[i][2]
 			local 	NR = 			TRuNKS[i][3]
 			local 	chance = 		math.random(1, 17)
+			local 	length = 		math.random(3,5)
 			if chance == NR then
 				local trunk_type = math.random(1,3)
 				if trunk_type == 1 then
@@ -272,17 +282,31 @@ abstract_trunks.place_trunk = function(pos)
 						if minetest.registered_nodes[node_north.name].buildable_to then
 							minetest.add_node(north, {name=MoD..":"..TRuNK, param2=4})
 						end
+						
+						if length >= 4 and minetest.registered_nodes[node_north2.name].buildable_to then
+							minetest.add_node(north2, {name=MoD..":"..TRuNK, param2=4})
+						end
+
 						minetest.add_node(right_here, {name=MoD..":"..TRuNK, param2=4})
 						if minetest.registered_nodes[node_south.name].buildable_to then
 							minetest.add_node(south, {name=MoD..":"..TRuNK, param2=4})
+						end
+						if length == 5 and minetest.registered_nodes[node_south2.name].buildable_to then
+							minetest.add_node(south2, {name=MoD..":"..TRuNK, param2=4})
 						end
 					else
 						if minetest.registered_nodes[node_north.name].buildable_to then
 							minetest.add_node(north, {name="default:tree", param2=4})
 						end
+						if length >= 4 and minetest.registered_nodes[node_north2.name].buildable_to then
+							minetest.add_node(north2, {name="default:tree", param2=4})
+						end
 						minetest.add_node(right_here, {name="default:tree", param2=4})
 						if minetest.registered_nodes[node_south.name].buildable_to then
 							minetest.add_node(south, {name="default:tree", param2=4})
+						end
+						if length == 5 and minetest.registered_nodes[node_south2.name].buildable_to then
+							minetest.add_node(south2, {name="default:tree", param2=4})
 						end
 					end
 				elseif trunk_type == 3 and Horizontal_Trunks == true then
@@ -290,17 +314,29 @@ abstract_trunks.place_trunk = function(pos)
 						if minetest.registered_nodes[node_west.name].buildable_to then
 							minetest.add_node(west, {name=MoD..":"..TRuNK, param2=12})
 						end
+						if length >= 4 and minetest.registered_nodes[node_west2.name].buildable_to then
+							minetest.add_node(west2, {name=MoD..":"..TRuNK, param2=12})
+						end
 						minetest.add_node(right_here, {name=MoD..":"..TRuNK, param2=12})
 						if minetest.registered_nodes[node_east.name].buildable_to then
 							minetest.add_node(east, {name=MoD..":"..TRuNK, param2=12})
+						end
+						if length == 5 and minetest.registered_nodes[node_east2.name].buildable_to then
+							minetest.add_node(east2, {name=MoD..":"..TRuNK, param2=12})
 						end
 					else
 						if minetest.registered_nodes[node_west.name].buildable_to then
 							minetest.add_node(west, {name="default:tree", param2=12})
 						end
+						if length >= 4 and minetest.registered_nodes[node_west2.name].buildable_to then
+							minetest.add_node(west2, {name="default:tree", param2=12})
+						end
 						minetest.add_node(right_here, {name="default:tree", param2=12})
 						if minetest.registered_nodes[node_east.name].buildable_to then
 							minetest.add_node(east, {name="default:tree", param2=12})
+						end
+						if length == 5 and minetest.registered_nodes[node_east2.name].buildable_to then
+							minetest.add_node(east2, {name="default:tree", param2=12})
 						end
 					end
 				end
@@ -452,10 +488,6 @@ plantslib:register_generate_plant({
     rarity = Moss_on_trunk_Rarity,
     min_elevation = 1,
 	max_elevation = 40,
-	--near_nodes = {"default:dirt_with_grass"},
-	--near_nodes_size = 1,
-	--near_nodes_vertical = 1,
-	--near_nodes_count = 1,
     plantlife_limit = -0.9,
 	check_air = false,
   },
