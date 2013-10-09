@@ -6,11 +6,16 @@ Credit for textures of "along_shore"
 FOLDER									TEXTURE							AUTHORS
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ../along_shore/textures				   (along_shore_empty.png) 		   (Mossmanikin)
-										along_shore_lilypads_1.png		Neuromancer
-										along_shore_lilypads_2.png		Neuromancer
-										along_shore_lilypads_3.png		Neuromancer
-										along_shore_lilypads_4.png		Neuromancer
-										along_shore_pondscum_1.png		Neuromancer
+										along_shore_lilypads_1.png		Mossmanikin, Neuromancer
+										along_shore_lilypads_2.png		Mossmanikin, Neuromancer
+										along_shore_lilypads_3.png		Mossmanikin, Neuromancer
+										along_shore_lilypads_4.png		Mossmanikin, Neuromancer
+										along_shore_pondscum_1.png		Mossmanikin, Neuromancer
+										flowers_seaweed.png				Mossmanikin, VanessaE
+										flowers_waterlily.png			Mossmanikin, VanessaE
+										flowers_waterlily_22.5.png		Mossmanikin, VanessaE
+										flowers_waterlily_45.png		Mossmanikin, VanessaE
+										flowers_waterlily_67.5.png		Mossmanikin, VanessaE
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ../along_shore/textures/old & unused	lillypad3Flower16x.png			Neuromancer	
 										LillyPad3x16.png				Neuromancer		

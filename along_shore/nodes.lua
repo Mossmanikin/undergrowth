@@ -38,7 +38,7 @@ for i in pairs(LiLy_PaDS) do
 			local pt = pointed_thing
 			local direction = minetest.dir_to_facedir(placer:get_look_dir())
 			if minetest.get_node(pt.above).name=="air" then
-				minetest.set_node(pt.above, {name="along_shore:lilypads_"..math.random(1,3), param2=direction})
+				minetest.set_node(pt.above, {name="along_shore:lilypads_"..math.random(1,4), param2=direction})
 				if not minetest.setting_getbool("creative_mode") then
 					itemstack:take_item()
 				end

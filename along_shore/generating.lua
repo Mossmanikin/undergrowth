@@ -4,7 +4,7 @@
 
 abstract_along_shore.grow_lilypad = function(pos)
 	local right_here = {x=pos.x, y=pos.y+1, z=pos.z}
-	local lily_type = math.random(1,3)
+	local lily_type = math.random(1,6)
 	if lily_type == 1 then
 		minetest.add_node(right_here, {name="along_shore:lilypads_"..math.random(1,3), param2=math.random(0,3)})
 	end
@@ -28,8 +28,15 @@ abstract_along_shore.grow_lilypad = function(pos)
 			minetest.add_node(right_here, {name="along_shore:lilypads_"..math.random(1,4), param2=math.random(0,3)})
 		end
 	end
-	if lily_type == 3 then
-		minetest.add_node(right_here, {name="along_shore:pondscum_1", param2=1})
+	--if lily_type == 3 then
+		--minetest.add_node(right_here, {name="along_shore:pondscum_1", param2=1})
+	--end
+	if lily_type >= 3 then
+		if minetest.get_modpath("flowers_plus") ~= nil then
+			minetest.add_node(right_here, {name="flowers:seaweed", param2=1})
+		else
+			minetest.add_node(right_here, {name="along_shore:pondscum_1", param2=1})
+		end
 	end
 end
 
