@@ -49,32 +49,47 @@ for i in pairs(LiLy_PaDS) do
 end
 
 -----------------------------------------------------------------------------------------------
--- PoND SCuM
+-- Sea WeeD
 -----------------------------------------------------------------------------------------------
-local PoND_SCuM = { {1} }
+minetest.register_alias("along_shore:pondscum_1",	"along_shore:seaweed_1")
+
+local PoND_SCuM = { {1}, {2}, {3}, {4} }
 
 for i in pairs(PoND_SCuM) do
 	local NR = PoND_SCuM[i][1]
 	local iNV = NR - 1
-	minetest.register_node("along_shore:pondscum_"..NR, {
-		description = "Pond Scum",
-		drawtype = "signlike", -- idea here is: you can smack it against a wall and it stays there
+	minetest.register_node("along_shore:seaweed_"..NR, {
+		description = "Seaweed",
+		--drawtype = "signlike", -- MM: idea here is: you can smack it against a wall and it stays there
+		drawtype = "nodebox", -- MM: think rotation is more important than previous idea
 		tiles = { 
-			"along_shore_pondscum_"..NR..".png",
-			"along_shore_pondscum_"..NR..".png^[transformFY", -- mirror
+			"along_shore_seaweed_"..NR..".png",
+			"along_shore_seaweed_"..NR..".png^[transformFY", -- mirror
 			"along_shore_empty.png"
 		},
-		inventory_image = "along_shore_pondscum_"..NR..".png",
-		wield_image = "along_shore_pondscum_"..NR..".png",
+		inventory_image = "along_shore_seaweed_2.png",
+		wield_image = "along_shore_seaweed_2.png",
 		paramtype = "light",
-		paramtype2 = "wallmounted",
+		paramtype2 = "facedir",
 		sunlight_propagates = true,
 		buildable_to = true,
 		walkable = false,
-		selection_box = {type = "wallmounted"},
-		groups = {dig_immediate=2,not_in_creative_inventory=iNV},
-		drop = "along_shore:pondscum_1",
+		node_box = {type = "fixed", fixed = super_flat},
+		selection_box = {type = "fixed", fixed = quite_flat},
+		groups = {dig_immediate=2,not_in_creative_inventory=iNV,flower=1},
+		drop = "along_shore:seaweed_1",
 		sounds = default.node_sound_leaves_defaults(),
 		liquids_pointable = true,
+		on_place = function(itemstack, placer, pointed_thing)
+			local pt = pointed_thing
+			local direction = minetest.dir_to_facedir(placer:get_look_dir())
+			if minetest.get_node(pt.above).name=="air" then
+				minetest.set_node(pt.above, {name="along_shore:seaweed_"..math.random(1,4), param2=direction})
+				if not minetest.setting_getbool("creative_mode") then
+					itemstack:take_item()
+				end
+				return itemstack
+			end
+		end,
 	})
 end

@@ -11,5 +11,12 @@ Lilypads_Rarity		= 33 -- larger values make lillypads more rare (100 means chanc
 
 
 
+Seaweed_Max_Count	= 320 -- absolute maximum number in an area of 80x80x80 nodes
+
+
+Seaweed_Rarity		= 33 -- larger values make lillypads more rare (100 means chance of 0 %)
+
+
+
 
 
