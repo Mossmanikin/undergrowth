@@ -7,67 +7,83 @@
  
   abstract_bushes = {} 
 
-  minetest.register_node("bushes:bushbranches1", {
-    description = "bushbranches1",
-    drawtype = "nodebox",
-    tiles = {
-        "blank.png",
-        "BushBranchesCenter.png",
-        "BushBranchesCenter.png",
-        "BushBranchesCenter.png",
-        "BushBranchesCenter.png",
-        "BushBranchesCenter.png"
-    },
-    node_box = {
-        type = "fixed",
-        fixed = {
-            {0, -1/2, -1/2, -1/4, 1/2, 1/2},
-            {0, -1/2, -1/2, 1/4, 1/2, 1/2}
-        },
-    },
-    selection_box = {
-        type = "fixed",
-        fixed = {-1/2, -1/2, -1/2, 1/2, 1/2, 1/2},
-    },
-    inventory_image = "BushBranchesCenter.png",
-    paramtype = "light",
-		paramtype2 = "facedir",
-			sunlight_propagates = true,
-    groups = {tree=1, snappy=3, flammable=2, leaves=1},
-    sounds = default.node_sound_leaves_defaults(),
-})
-
-local BushBranchNode 			= { {2}, {3}}
-for i in pairs(BushBranchNode) do
-	local Num = BushBranchNode[i][1]	
+  local BushBranchCenter 			= { {1,1}, {3,2} }
+for i in pairs(BushBranchCenter) do
+	local Num 		= BushBranchCenter[i][1]
+	local TexNum 	= BushBranchCenter[i][2]
 	minetest.register_node("bushes:bushbranches"..Num, {
-		description = "bushbranches"..Num,
+		description = "Bush Branches "..Num,
 		drawtype = "nodebox",
 		tiles = {
-			"blank.png",
-			"BushBranchesSide1.png",
-			"BushBranchesSide1.png",
-			"BushBranchesSide2.png",
-			"BushBranchesSide2.png",
-			"BushBranchesCenter.png"
+			"bush_leaves"..TexNum..".png",
+			"BushBranchesCenterLeaves"..TexNum..".png"--[[,
+			"BushBranchesCenter.png",
+			"BushBranchesCenter.png",
+			"BushBranchesCenter.png",
+			"BushBranchesCenter.png"]]
 		},
 		node_box = {
 			type = "fixed",
 			fixed = {
-			{0.137748,-0.491944,0.5,-0.125000,-0.179444,-0.007790}, --NodeBox 1
-			{0.262748,-0.185995,0.5,-0.237252,0.126505,-0.260269}, --NodeBox 2
-			{0.500000,0.125000,0.500000,-0.500000,0.500000,-0.500000}, --NodeBox 3
+				{0, -1/2, -1/2, -1/4, 1/2, 1/2},
+				{0, -1/2, -1/2, 1/4, 1/2, 1/2}
 			},
 		},
 		selection_box = {
 			type = "fixed",
 			fixed = {-1/2, -1/2, -1/2, 1/2, 1/2, 1/2},
 		},
-		inventory_image = "BushBranchesCenter.png",
+		inventory_image = "BushBranchesCenterLeaves"..TexNum..".png",
 		paramtype = "light",
 			paramtype2 = "facedir",
 				sunlight_propagates = true,
-		groups = {tree=1, snappy=3, flammable=2, leaves=1},
+		groups = {
+		--	tree=1, -- MM: disabled because some recipes use group:tree for trunks
+			snappy=3, 
+			flammable=2, 
+			leaves=1
+		},
+		sounds = default.node_sound_leaves_defaults(),
+	})
+end
+
+local BushBranchSide 			= { {2,1}, {4,2} }
+for i in pairs(BushBranchSide) do
+	local Num 		= BushBranchSide[i][1]
+	local TexNum 	= BushBranchSide[i][2]
+	minetest.register_node("bushes:bushbranches"..Num, {
+		description = "Bush Branches "..Num,
+		drawtype = "nodebox",
+		tiles = {
+			"bush_leaves"..TexNum..".png",
+			"BushBranchesCenterLeaves"..TexNum..".png",
+			"BushBranchesSide1Leaves"..TexNum..".png",
+			"BushBranchesSide1Leaves"..TexNum..".png",
+			"BushBranchesSide2Leaves"..TexNum..".png", -- MM: We could also mirror the previous here,
+			"BushBranchesSide2Leaves"..TexNum..".png"  --     unless U really want 'em 2 B different
+		},
+		node_box = {
+			type = "fixed",
+			fixed = {
+				{0.137748,-0.491944,0.5,-0.125000,-0.179444,-0.007790}, --NodeBox 1
+				{0.262748,-0.185995,0.5,-0.237252,0.126505,-0.260269}, --NodeBox 2
+				{0.500000,0.125000,0.500000,-0.500000,0.500000,-0.500000}, --NodeBox 3
+			},
+		},
+		selection_box = {
+			type = "fixed",
+			fixed = {-1/2, -1/2, -1/2, 1/2, 1/2, 1/2},
+		},
+		inventory_image = "BushBranchesSide2Leaves"..TexNum..".png",
+		paramtype = "light",
+			paramtype2 = "facedir",
+				sunlight_propagates = true,
+		groups = {
+		--	tree=1, -- MM: disabled because some recipes use group:tree for trunks
+			snappy=3, 
+			flammable=2, 
+			leaves=1
+		},
 		sounds = default.node_sound_leaves_defaults(),
 	})
 end
@@ -81,7 +97,7 @@ for i in pairs(BushLeafNode) do
 		tiles = {"bush_leaves"..Num..".png"},
 		inventory_image = "bush_leaves"..Num..".png",
 		paramtype = "light",
-		groups = {		
+		groups = {	-- MM: Should we add leafdecay?	
 			snappy=3,
 			flammable=2,
 			attached_node=1
@@ -127,9 +143,23 @@ abstract_bushes.grow_bush_node = function(pos,dir, leaf_type)
 	local above_right_here = {x=pos.x, y=pos.y+2, z=pos.z}
 	
 	--local bush_branch_type = math.random(1,3)
-	local bush_branch_type = 2
-	if dir == 5 then
+	--local bush_branch_type = 2
+	
+	-- MM: I'm not sure if it's slower now than before...
+	if dir ~= 5 and leaf_type == 1 then
+		bush_branch_type = 2
+		dir = 1
+	end
+	if dir ~= 5 and leaf_type == 2 then
+		bush_branch_type = 4
+		dir = 1
+	end
+	if dir == 5 and leaf_type == 1 then
 		bush_branch_type = 1
+		dir = 1
+	end
+	if dir == 5 and leaf_type == 2 then
+		bush_branch_type = 3
 		dir = 1
 	end
 	
