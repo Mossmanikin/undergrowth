@@ -285,3 +285,84 @@ if Auto_Roof_Corner == true then
 		end,
 	})
 end
+
+-- MM: The following stuff is just for testing purposes for now; no generating of roots.
+--     I'm not satisfied with this; they should be either bigger or a different drawtype.
+-----------------------------------------------------------------------------------------------
+-- RooTS 
+-----------------------------------------------------------------------------------------------
+if Roots == true then -- see settings.txt
+
+local roots_cube =	{-4/16, -1/2, 3/16, 4/16, -3/16, 1/2}
+
+local trunk_roots = {
+--	{ left	,  bottom ,  front  ,  right ,  top   ,  back  }
+	{-1/16  ,  -8/16  ,   3/16  ,  1/16  , -7/16  ,  8/16  },
+	{-2/16  ,  -8/16  ,   5/16  ,  2/16  , -7/16  ,  8/16  },
+	{-3/16  ,  -8/16  ,   6/16  ,  3/16  , -7/16  ,  8/16  },
+	{-4/16  ,  -8/16  ,   7/16  ,  4/16  , -7/16  ,  9/16  },
+				
+	{-1/16  ,  -7/16  ,   5/16  ,  1/16  , -6/16  ,  8/16  },
+	{-2/16  ,  -7/16  ,   6/16  ,  2/16  , -6/16  ,  8/16  },
+	{-3/16  ,  -7/16  ,   7/16  ,  3/16  , -6/16  ,  8/16  },
+				
+	{-1/16  ,  -6/16  ,   6/16  ,  1/16  , -5/16  ,  8/16  },
+	{-2/16  ,  -6/16  ,   7/16  ,  2/16  , -5/16  ,  8/16  },
+				
+	{-1/16  ,  -5/16  ,   7/16  ,  1/16  , -3/16  ,  8/16  },
+}
+
+local TRuNKS = {
+--	  MoD 						 TRuNK
+    {"default",  				"tree"						},
+	{"default",					"jungletree"				},
+	
+	{"trees",					"tree_conifer"				},
+	{"trees",					"tree_mangrove"				},
+	{"trees",					"tree_palm"					},
+	
+	{"moretrees",				"apple_tree_trunk"			},
+	{"moretrees",				"beech_trunk"				},
+	{"moretrees",				"birch_trunk"				},
+	{"moretrees",				"fir_trunk"					},
+	{"moretrees",				"oak_trunk"					},
+	{"moretrees",				"palm_trunk"				},
+	{"moretrees",				"pine_trunk"				},
+	{"moretrees",				"rubber_tree_trunk"			},
+	{"moretrees",				"rubber_tree_trunk_empty"	},
+	{"moretrees",				"sequoia_trunk"				},
+	{"moretrees",				"spruce_trunk"				},
+	{"moretrees",				"willow_trunk"				},
+}
+
+for i in pairs(TRuNKS) do
+	local 	MoD = 			TRuNKS[i][1]
+	local 	TRuNK = 		TRuNKS[i][2]
+	if minetest.get_modpath(MoD) ~= nil then
+		
+		local des = minetest.registered_nodes[MoD..":"..TRuNK].description
+		--local tls = minetest.registered_nodes[MoD..":"..TRuNK].tiles[3]
+		--local tli = minetest.registered_nodes[MoD..":"..TRuNK].tile_images[3]
+	
+		minetest.register_node("trunks:"..TRuNK.."root", {
+			description = des.." Root",
+			paramtype = "light",
+			paramtype2 = "facedir",
+			tiles = {MoD.."_"..TRuNK..".png"},
+			--tile_images = tli,
+			drawtype = "nodebox",
+			selection_box = {type = "fixed", fixed = roots_cube},
+			node_box = {type = "fixed", fixed = trunk_roots},
+			groups = {
+				tree=1,
+				snappy=1,
+				choppy=2,
+				oddly_breakable_by_hand=1,
+				flammable=2
+			},
+			sounds = default.node_sound_wood_defaults(),
+		}) 
+	
+	end
+end
+end
