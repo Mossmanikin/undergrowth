@@ -148,11 +148,9 @@ abstract_bushes.grow_bush_node = function(pos,dir, leaf_type)
 	-- MM: I'm not sure if it's slower now than before...
 	if dir ~= 5 and leaf_type == 1 then
 		bush_branch_type = 2
-		dir = 1
 	end
 	if dir ~= 5 and leaf_type == 2 then
 		bush_branch_type = 4
-		dir = 1
 	end
 	if dir == 5 and leaf_type == 1 then
 		bush_branch_type = 1
