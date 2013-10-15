@@ -15,12 +15,8 @@ for i in pairs(BushBranchCenter) do
 		description = "Bush Branches "..Num,
 		drawtype = "nodebox",
 		tiles = {
-			"bush_leaves"..TexNum..".png",
-			"BushBranchesCenterLeaves"..TexNum..".png"--[[,
-			"BushBranchesCenter.png",
-			"BushBranchesCenter.png",
-			"BushBranchesCenter.png",
-			"BushBranchesCenter.png"]]
+			"bushes_leaves_"..TexNum..".png",
+			"bushes_branches_center_"..TexNum..".png"
 		},
 		node_box = {
 			type = "fixed",
@@ -33,7 +29,7 @@ for i in pairs(BushBranchCenter) do
 			type = "fixed",
 			fixed = {-1/2, -1/2, -1/2, 1/2, 1/2, 1/2},
 		},
-		inventory_image = "BushBranchesCenterLeaves"..TexNum..".png",
+		inventory_image = "bushes_branches_center_"..TexNum..".png",
 		paramtype = "light",
 			paramtype2 = "facedir",
 				sunlight_propagates = true,
@@ -55,26 +51,27 @@ for i in pairs(BushBranchSide) do
 		description = "Bush Branches "..Num,
 		drawtype = "nodebox",
 		tiles = {
-			"bush_leaves"..TexNum..".png",
-			"BushBranchesCenterLeaves"..TexNum..".png",
-			"BushBranchesSide1Leaves"..TexNum..".png",
-			"BushBranchesSide1Leaves"..TexNum..".png",
-			"BushBranchesSide2Leaves"..TexNum..".png", -- MM: We could also mirror the previous here,
-			"BushBranchesSide2Leaves"..TexNum..".png"  --     unless U really want 'em 2 B different
+--[[top]] 	"bushes_leaves_"..TexNum..".png",
+--[[bottom]]"bushes_branches_center_"..TexNum..".png",
+--[[right]]	"bushes_branches_left_"..TexNum..".png",
+--[[left]]	"bushes_branches_right_"..TexNum..".png", -- MM: We could also mirror the previous here,
+--[[back]]	"bushes_branches_center_"..TexNum..".png",--     unless U really want 'em 2 B different 
+--[[front]]	"bushes_branches_right_"..TexNum..".png"  
 		},
 		node_box = {
 			type = "fixed",
 			fixed = {
-				{0.137748,-0.491944,0.5,-0.125000,-0.179444,-0.007790}, --NodeBox 1
-				{0.262748,-0.185995,0.5,-0.237252,0.126505,-0.260269}, --NodeBox 2
-				{0.500000,0.125000,0.500000,-0.500000,0.500000,-0.500000}, --NodeBox 3
+--				{ left	 , bottom  , front, right   , top     , back    }
+				{0.137748,-0.491944, 0.5  ,-0.125000,-0.179444,-0.007790}, --NodeBox 1
+				{0.262748,-0.185995, 0.5  ,-0.237252, 0.126505,-0.260269}, --NodeBox 2
+				{0.500000, 0.125000, 0.5  ,-0.500000, 0.500000,-0.500000}, --NodeBox 3
 			},
 		},
 		selection_box = {
 			type = "fixed",
 			fixed = {-1/2, -1/2, -1/2, 1/2, 1/2, 1/2},
 		},
-		inventory_image = "BushBranchesSide2Leaves"..TexNum..".png",
+		inventory_image = "bushes_branches_right_"..TexNum..".png",
 		paramtype = "light",
 			paramtype2 = "facedir",
 				sunlight_propagates = true,
@@ -92,10 +89,10 @@ local BushLeafNode 			= { {1}, {2}}
 for i in pairs(BushLeafNode) do
 	local Num = BushLeafNode[i][1]	
 	minetest.register_node("bushes:BushLeaves"..Num, {
-		description = "BushLeaves"..Num,
+		description = "Bush Leaves "..Num,
 		drawtype = "allfaces_optional",
-		tiles = {"bush_leaves"..Num..".png"},
-		inventory_image = "bush_leaves"..Num..".png",
+		tiles = {"bushes_leaves_"..Num..".png"},
+		inventory_image = "bushes_leaves_"..Num..".png",
 		paramtype = "light",
 		groups = {	-- MM: Should we add leafdecay?	
 			snappy=3,
