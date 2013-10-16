@@ -496,3 +496,66 @@ plantslib:register_generate_plant({
   "abstract_trunks.grow_moss_on_trunk"
 )
 end
+
+-----------------------------------------------------------------------------------------------
+-- RooTS 
+-----------------------------------------------------------------------------------------------
+if Roots == true then -- see settings.txt
+
+abstract_trunks.grow_roots = function(pos)
+	local twig_size 	= math.random(1,27)
+	
+	local right_here 	= {x=pos.x  , y=pos.y  , z=pos.z  }
+	local below 		= {x=pos.x  , y=pos.y-1, z=pos.z  }
+	local north 		= {x=pos.x  , y=pos.y  , z=pos.z+1}
+	local east 			= {x=pos.x+1, y=pos.y  , z=pos.z  }
+	local south 		= {x=pos.x  , y=pos.y  , z=pos.z-1}
+	local west 			= {x=pos.x-1, y=pos.y  , z=pos.z  }
+	
+	local node_here 	= minetest.get_node(right_here)
+	local node_below	= minetest.get_node(below)
+	local node_north 	= minetest.get_node(north)
+	local node_east 	= minetest.get_node(east)
+	local node_south 	= minetest.get_node(south)
+	local node_west 	= minetest.get_node(west)
+
+	for i in pairs(TRuNKS) do
+		local 	MoD = 			TRuNKS[i][1]
+		local 	TRuNK = 		TRuNKS[i][2]
+		if minetest.get_modpath(MoD) ~= nil 
+		and node_here.name == MoD..":"..TRuNK 
+		and string.find(node_below.name, "dirt")
+		and node_here.param2 == 0 then
+			if minetest.registered_nodes[node_north.name].buildable_to then
+				minetest.add_node(north, {name="trunks:"..TRuNK.."root", param2=2})
+			end
+			if minetest.registered_nodes[node_east.name].buildable_to then
+				minetest.add_node(east, {name="trunks:"..TRuNK.."root", param2=3})
+			end
+			if minetest.registered_nodes[node_south.name].buildable_to then
+				minetest.add_node(south, {name="trunks:"..TRuNK.."root", param2=0})
+			end
+			if minetest.registered_nodes[node_west.name].buildable_to then
+				minetest.add_node(west, {name="trunks:"..TRuNK.."root", param2=1})
+			end
+		end
+	end
+end
+
+plantslib:register_generate_plant({
+    surface = {"group:tree"},
+    max_count = 1000,
+    rarity = 1,
+    min_elevation = 1,
+	max_elevation = 40,
+	near_nodes = {"default:dirt_with_grass"},
+	near_nodes_size = 1,
+	near_nodes_vertical = 1,
+	near_nodes_count = 1,
+    plantlife_limit = -1,
+    check_air = false,
+  },
+  "abstract_trunks.grow_roots"
+)
+
+end

@@ -293,24 +293,9 @@ end
 -----------------------------------------------------------------------------------------------
 if Roots == true then -- see settings.txt
 
-local roots_cube =	{-4/16, -1/2, 3/16, 4/16, -3/16, 1/2}
+local roots_cube =	{-2/16, -1/2, -3/16, 2/16, 1/16, 1/2}
 
-local trunk_roots = {
---	{ left	,  bottom ,  front  ,  right ,  top   ,  back  }
-	{-1/16  ,  -8/16  ,   3/16  ,  1/16  , -7/16  ,  8/16  },
-	{-2/16  ,  -8/16  ,   5/16  ,  2/16  , -7/16  ,  8/16  },
-	{-3/16  ,  -8/16  ,   6/16  ,  3/16  , -7/16  ,  8/16  },
-	{-4/16  ,  -8/16  ,   7/16  ,  4/16  , -7/16  ,  9/16  },
-				
-	{-1/16  ,  -7/16  ,   5/16  ,  1/16  , -6/16  ,  8/16  },
-	{-2/16  ,  -7/16  ,   6/16  ,  2/16  , -6/16  ,  8/16  },
-	{-3/16  ,  -7/16  ,   7/16  ,  3/16  , -6/16  ,  8/16  },
-				
-	{-1/16  ,  -6/16  ,   6/16  ,  1/16  , -5/16  ,  8/16  },
-	{-2/16  ,  -6/16  ,   7/16  ,  2/16  , -5/16  ,  8/16  },
-				
-	{-1/16  ,  -5/16  ,   7/16  ,  1/16  , -3/16  ,  8/16  },
-}
+local roots_sheet = {0, -1/2, -1/2, 0, 1/16, 1/2}
 
 local TRuNKS = {
 --	  MoD 						 TRuNK
@@ -346,17 +331,26 @@ for i in pairs(TRuNKS) do
 			description = des.." Root",
 			paramtype = "light",
 			paramtype2 = "facedir",
-			tiles = {MoD.."_"..TRuNK..".png"},
+			tiles = {
+--[[top]]		MoD.."_"..TRuNK..".png",
+--[[bottom]]	MoD.."_"..TRuNK..".png",
+--[[right]]		MoD.."_"..TRuNK..".png^trunks_root_mask.png^[makealpha:0,0,0",
+--[[left]]		MoD.."_"..TRuNK..".png^trunks_root_mask.png^[transformFX^[makealpha:0,0,0",
+--[[back]]		MoD.."_"..TRuNK..".png",
+--[[front]]		MoD.."_"..TRuNK..".png"
+			},
 			drawtype = "nodebox",
 			selection_box = {type = "fixed", fixed = roots_cube},
-			node_box = {type = "fixed", fixed = trunk_roots},
+			node_box = {type = "fixed", fixed = roots_sheet},
 			groups = {
 				tree=1,
 				snappy=1,
 				choppy=2,
 				oddly_breakable_by_hand=1,
-				flammable=2
+				flammable=2--,
+				--not_in_creative_inventory=1 -- atm in inv for testing 
 			},
+			--drop = "trunks:twig_1", -- not sure about this yet
 			sounds = default.node_sound_wood_defaults(),
 		}) 
 	
