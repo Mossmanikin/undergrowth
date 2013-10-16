@@ -3,7 +3,7 @@
 -- TWiGS
 -----------------------------------------------------------------------------------------------
 abstract_trunks.place_twig = function(pos)
-	local twig_size 	= math.random(1,24)
+	local twig_size 	= math.random(1,27)
 	
 	local right_here 	= {x=pos.x  , y=pos.y+1, z=pos.z  }
 	local north 		= {x=pos.x  , y=pos.y+1, z=pos.z+1}
@@ -144,6 +144,8 @@ abstract_trunks.place_twig = function(pos)
 				minetest.add_node(north_west, {name="trunks:twig_11", param2=3})
 			end
 		end
+	elseif twig_size <= 25 then
+		minetest.add_node(right_here, {name="trunks:twig_"..math.random(12,13), param2=math.random(0,3)})
 	end
 	end
 end

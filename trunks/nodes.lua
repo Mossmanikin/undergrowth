@@ -6,7 +6,7 @@
 minetest.register_alias("trunks:twig",	"trunks:twig_1")
 
 local flat_stick = {-1/2, -1/2, -1/2, 1/2, -7/16, 1/2}
-local NoDe = { {1}, {2}, {3}, {4}, {5}, --[[{6},]] {7}, {8}, {9}, {10}, {11} }
+local NoDe = { {1}, {2}, {3}, {4}, {5}, --[[{6},]] {7}, {8}, {9}, {10}, {11}, {12}, {13} }
 
 
 for i in pairs(NoDe) do
@@ -67,7 +67,7 @@ minetest.register_node("trunks:moss", {
 	walkable = false,
 	node_box = {type = "fixed", fixed = flat_moss},
 	selection_box = {type = "fixed", fixed = flat_stick},--{type = "wallmounted"},
-	groups = {dig_immediate=2,attached_node=1},
+	groups = {dig_immediate=2--[[,attached_node=1]]}, -- falling moss is too annoying
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -86,7 +86,7 @@ minetest.register_node("trunks:moss_fungus", {
 	walkable = false,
 	node_box = {type = "fixed", fixed = flat_moss},
 	selection_box = {type = "fixed", fixed = flat_stick},--{type = "wallmounted"},
-	groups = {dig_immediate=2,attached_node=1},
+	groups = {dig_immediate=2--[[,attached_node=1]]}, -- falling moss is too annoying
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -341,15 +341,12 @@ for i in pairs(TRuNKS) do
 	if minetest.get_modpath(MoD) ~= nil then
 		
 		local des = minetest.registered_nodes[MoD..":"..TRuNK].description
-		--local tls = minetest.registered_nodes[MoD..":"..TRuNK].tiles[3]
-		--local tli = minetest.registered_nodes[MoD..":"..TRuNK].tile_images[3]
 	
 		minetest.register_node("trunks:"..TRuNK.."root", {
 			description = des.." Root",
 			paramtype = "light",
 			paramtype2 = "facedir",
 			tiles = {MoD.."_"..TRuNK..".png"},
-			--tile_images = tli,
 			drawtype = "nodebox",
 			selection_box = {type = "fixed", fixed = roots_cube},
 			node_box = {type = "fixed", fixed = trunk_roots},
