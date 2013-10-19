@@ -91,7 +91,7 @@ plantslib:register_generate_plant({
 		"sumpf:peat",
 		"sumpf:sumpf"
 	},
-    max_count = 15,  --10,15
+    max_count = 55,  --10,15
     rarity = 101 - 4,  --3,4
     min_elevation = 1, -- above sea level
 	plantlife_limit = -0.9,
