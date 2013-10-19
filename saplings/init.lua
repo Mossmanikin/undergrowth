@@ -1,65 +1,55 @@
+ 
 minetest.register_node("saplings:sapling_top", {
 	description = "SaplingTop",
 	drawtype = "plantlike",
-	visual_scale = 1,
-	paramtype = "light",
 	tiles = {"sapling16xa.png"},
 	inventory_image = "sapling16xa.png",
+	wield_image = "sapling16xa.png",
+	paramtype = "light",
 	walkable = false,
-	groups = {
-		snappy=3,
-		flammable=2,
-		attached_node=1--,
-		--not_in_creative_inventory=1
-	},
-	sounds = default.node_sound_leaves_defaults(),
+	is_ground_content = true,
 	selection_box = {
 		type = "fixed",
-		fixed = {-7/16, -1/2, -7/16, 7/16, 0, 7/16},
+		fixed = {-0.3, -0.5, -0.3, 0.3, 0.5, 0.3}
 	},
-	--drop = "ferns:fern_01",
+	groups = {snappy=3,flammable=2},
+	sounds = default.node_sound_leaves_defaults(),
 })
 
+ 
 minetest.register_node("saplings:sapling_middle", {
 	description = "SaplingMiddle",
 	drawtype = "plantlike",
-	visual_scale = 1,
-	paramtype = "light",
 	tiles = {"sapling16xb.png"},
 	inventory_image = "sapling16xb.png",
+	wield_image = "sapling16xb.png",
+	paramtype = "light",
 	walkable = false,
-	groups = {
-		snappy=3,
-		flammable=2,
-		attached_node=1--,
-		--not_in_creative_inventory=1
-	},
-	sounds = default.node_sound_leaves_defaults(),
+	is_ground_content = true,
 	selection_box = {
 		type = "fixed",
-		fixed = {-7/16, -1/2, -7/16, 7/16, 0, 7/16},
+		fixed = {-0.3, -0.5, -0.3, 0.3, 0.5, 0.3}
 	},
-	--drop = "ferns:fern_01",
+	groups = {snappy=3,flammable=2},
+	sounds = default.node_sound_leaves_defaults(),
 })
 
+
+ 
 minetest.register_node("saplings:sapling_bottom", {
 	description = "SaplingBottom",
 	drawtype = "plantlike",
-	visual_scale = 1,
-	paramtype = "light",
 	tiles = {"sapling16xc.png"},
 	inventory_image = "sapling16xc.png",
+	wield_image = "sapling16xc.png",
+	paramtype = "light",
 	walkable = false,
-	groups = {
-		snappy=3,
-		flammable=2,
-		attached_node=1--,
-		--not_in_creative_inventory=1
-	},
-	sounds = default.node_sound_leaves_defaults(),
+	is_ground_content = true,
 	selection_box = {
 		type = "fixed",
-		fixed = {-7/16, -1/2, -7/16, 7/16, 0, 7/16},
+		fixed = {-0.3, -0.5, -0.3, 0.3, 0.5, 0.3}
 	},
-	--drop = "ferns:fern_01",
+	groups = {snappy=3,flammable=2},
+	sounds = default.node_sound_leaves_defaults(),
 })
+ 
