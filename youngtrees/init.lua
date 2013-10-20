@@ -24,24 +24,7 @@ node_box = {
 	sounds = default.node_sound_leaves_defaults(),
 })
  
-minetest.register_node("youngtrees:youngtree2_bottom", {
-	description = "youngtree2Bottom", 
- drawtype="nodebox",
- tiles = {"youngtree2trunk.png"},
- 	inventory_image = "youngtree2trunk.png",
-	wield_image = "youngtree2trunk.png", 
-paramtype = "light",
-	walkable = false,
-	is_ground_content = true,
-node_box = {
-	type = "fixed",
-	fixed = {
-		{0.375000,-0.500000,-0.500000,0.500000,0.500000,-0.375000}, --NodeBox 1
-	}
-},
-	groups = {snappy=3,flammable=2},
-	sounds = default.node_sound_leaves_defaults(),
-})
+
 
 
 minetest.register_node("youngtrees:youngtree2_middle",{

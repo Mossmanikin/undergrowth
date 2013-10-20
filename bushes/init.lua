@@ -7,6 +7,26 @@
  
   abstract_bushes = {} 
 
+  minetest.register_node("bushes:youngtree2_bottom", {
+	description = "youngtree2Bottom", 
+ drawtype="nodebox",
+ tiles = {"youngtree2trunk.png"},
+ 	inventory_image = "youngtree2trunk.png",
+	wield_image = "youngtree2trunk.png", 
+paramtype = "light",
+	walkable = false,
+	is_ground_content = true,
+node_box = {
+	type = "fixed",
+	fixed = {
+		--{0.375000,-0.500000,-0.500000,0.500000,0.500000,-0.375000}, --NodeBox 1
+		{-0.0612,-0.500000,-0.500000,0.0612,0.500000,-0.375000}, --NodeBox 1
+	}
+},
+	groups = {snappy=3,flammable=2},
+	sounds = default.node_sound_leaves_defaults(),
+})
+  
   local BushBranchCenter 			= { {1,1}, {3,2} }
 for i in pairs(BushBranchCenter) do
 	local Num 		= BushBranchCenter[i][1]
@@ -188,5 +208,51 @@ plantslib:register_generate_plant({
   },
   "abstract_bushes.grow_bush"
 )		
+
+ abstract_bushes.grow_youngtree2 = function(pos)
+	local height = math.random(4,5)	
+	abstract_bushes.grow_youngtree_node2(pos,height)
+end
+
+abstract_bushes.grow_youngtree_node2 = function(pos, height)
+	
+	
+	local right_here = {x=pos.x, y=pos.y+1, z=pos.z}
+	local above_right_here = {x=pos.x, y=pos.y+2, z=pos.z}
+	local two_above_right_here = {x=pos.x, y=pos.y+3, z=pos.z}
+	local three_above_right_here = {x=pos.x, y=pos.y+4, z=pos.z}
+	 
+	if minetest.get_node(right_here).name == "air"  -- instead of check_air = true,
+	or minetest.get_node(right_here).name == "default:junglegrass" then
+		if height == 4 then
+				local two_above_right_here_south = {x=pos.x, y=pos.y+3, z=pos.z-1}
+				local three_above_right_here_south = {x=pos.x, y=pos.y+4, z=pos.z-1}
+				minetest.add_node(right_here, {name="bushes:youngtree2_bottom"})
+				minetest.add_node(above_right_here, {name="bushes:youngtree2_bottom"})
+				minetest.add_node(two_above_right_here, {name="bushes:bushbranches2"  , param2=2})
+				minetest.add_node(two_above_right_here_south, {name="bushes:bushbranches2"  , param2=0})
+				minetest.add_node(three_above_right_here, {name="bushes:BushLeaves1" })
+				minetest.add_node(three_above_right_here_south, {name="bushes:BushLeaves1" })
+		end
+		 
+	end
+end
+
+
+plantslib:register_generate_plant({
+    surface = {
+		"default:dirt_with_grass", 
+		"stoneage:grass_with_silex",
+		"sumpf:peat",
+		"sumpf:sumpf"
+	},
+    max_count = 55,  --10,15
+    rarity = 101 - 4,  --3,4
+    min_elevation = 1, -- above sea level
+	plantlife_limit = -0.9,
+	check_air = false,
+  },
+  "abstract_bushes.grow_youngtree2"
+)	
 	 
 		--http://dev.minetest.net/Node_Drawtypes
