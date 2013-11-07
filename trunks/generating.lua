@@ -1,7 +1,18 @@
--- Code by Mossmanikin & Neuromancer
+-- Code by Mossmanikin, Neuromancer, and others
+
+local function clone_node(name)
+	node2={}
+	node=minetest.registered_nodes[name]
+	for k,v in pairs(node) do
+		node2[k]=v
+	end
+	return node2
+end
+
 -----------------------------------------------------------------------------------------------
 -- TWiGS
 -----------------------------------------------------------------------------------------------
+
 abstract_trunks.place_twig = function(pos)
 	local twig_size 	= math.random(1,27)
 	
@@ -217,32 +228,15 @@ for i in pairs(TRuNKS) do
 	local 	NR = 			TRuNKS[i][3]
 	if minetest.get_modpath(MoD) ~= nil 
 	and NR < 6 then -- moretrees trunks allready have facedir
-		
-		local des = minetest.registered_nodes[MoD..":"..TRuNK].description
-		  local par = minetest.registered_nodes[MoD..":"..TRuNK].paramtype
-		local tls = minetest.registered_nodes[MoD..":"..TRuNK].tiles
-		local tli = minetest.registered_nodes[MoD..":"..TRuNK].tile_images
-		--  local igc = minetest.registered_nodes[MoD..":"..TRuNK].is_ground_content
-		local grp = minetest.registered_nodes[MoD..":"..TRuNK].groups
-		--  local drp = minetest.registered_nodes[MoD..":"..TRuNK].drop
-		local snd = minetest.registered_nodes[MoD..":"..TRuNK].sounds
-	
-		minetest.register_node(":"..MoD..":"..TRuNK, {
-			description = des,
-			  paramtype = par,
-			paramtype2 = "facedir", -- main change for lying trunks
-			tiles = tls,
-			tile_images = tli,
-			--  is_ground_content = igc,
-			groups = grp,
-			--  drop = drp,
-			sounds = snd,
-		}) 
-	
+
+			trunkname = MoD..":"..TRuNK
+			temptrunk = clone_node(trunkname)
+			temptrunk.paramtype2 = "facedir"
+			minetest.register_node(":"..trunkname, temptrunk)
 	end
 end
 end
-			
+	
 abstract_trunks.place_trunk = function(pos)
 	
 	local right_here = {x=pos.x, y=pos.y+1, z=pos.z}
